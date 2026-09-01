@@ -1,0 +1,291 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>VeilAI - Features</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1d1b19",
+                        "on-secondary-fixed": "#21143a",
+                        "on-tertiary-container": "#633854",
+                        "inverse-primary": "#fcb2c6",
+                        "on-error-container": "#93000a",
+                        "surface": "#fef8f3",
+                        "surface-bright": "#fef8f3",
+                        "outline-variant": "#d5c2c5",
+                        "primary-fixed-dim": "#fcb2c6",
+                        "secondary-fixed-dim": "#d0bfef",
+                        "secondary-fixed": "#eaddff",
+                        "outline": "#837376",
+                        "inverse-on-surface": "#f6f0eb",
+                        "background": "#fef8f3",
+                        "on-surface-variant": "#514346",
+                        "on-primary-fixed-variant": "#6c3647",
+                        "on-primary-container": "#6b3546",
+                        "on-primary-fixed": "#370b1c",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#e8a0b4",
+                        "primary-fixed": "#ffd9e1",
+                        "surface-container-high": "#ede7e2",
+                        "on-tertiary-fixed-variant": "#643955",
+                        "secondary-container": "#deccfd",
+                        "tertiary-fixed-dim": "#efb6d8",
+                        "primary": "#874d5f",
+                        "surface-container": "#f3ede8",
+                        "on-secondary-container": "#62547e",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#874d5f",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffd8ed",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#dca4c6",
+                        "surface-container-highest": "#e7e1dd",
+                        "on-background": "#1d1b19",
+                        "tertiary": "#7e506e",
+                        "on-secondary-fixed-variant": "#4d4068",
+                        "surface-variant": "#e7e1dd",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#ded9d4",
+                        "on-tertiary-fixed": "#320d28",
+                        "secondary": "#655781",
+                        "inverse-surface": "#32302d",
+                        "surface-container-low": "#f8f3ee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "80px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "margin-mobile": "20px",
+                        "md": "24px",
+                        "margin-desktop": "120px",
+                        "base": "8px",
+                        "lg": "48px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Nunito Sans"],
+                        "body-lg": ["Nunito Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-md": ["Nunito Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "caption": ["Nunito Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .ambient-shadow { box-shadow: 0 12px 40px -10px rgba(107, 63, 92, 0.08); }
+        .glass-panel { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col antialiased" data-mode="connect">
+<!-- TopNavBar (Shared Component) -->
+<header class="w-full sticky top-0 bg-background/80 dark:bg-background/80 backdrop-blur-md shadow-sm shadow-primary/5 z-50 transition-all duration-300 border-b border-outline-variant/30">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<div class="flex items-center gap-2 cursor-pointer"><span class="material-symbols-outlined text-primary text-[24px]" style="font-variation-settings: &quot;FILL&quot; 1;">shield_person</span><span class="text-headline-md font-headline-md text-primary tracking-tight">VeilAI</span></div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex items-center gap-gutter"><a class="text-on-surface-variant font-label-md hover:text-primary transition-colors duration-200" href="index.html">Home</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors duration-200" href="getstarted.html">How it Works</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md" href="features.html">Features</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors duration-200" href="contact.html">Contact</a></nav>
+<div class="flex items-center gap-4">
+<a href="getstarted.html" class="bg-primary text-on-primary font-label-md px-6 py-3 rounded-full hover:bg-on-primary-fixed-variant transition-colors duration-200 active:scale-95 hidden md:block text-center">Get Started</a>
+<button class="md:hidden text-primary p-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto text-center">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-6 md:w-3/4 mx-auto leading-tight">
+                What VeilAI Actually Does
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant md:w-2/3 mx-auto">
+                Most tools tell you after your photo has been misused. VeilAI stops it from being usable in the first place — here's how.
+            </p>
+</section>
+<!-- Feature 1: Face Cloaking -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<div class="flex flex-col lg:flex-row items-center gap-lg">
+<div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden ambient-shadow h-[400px]">
+<div class="bg-cover bg-center w-full h-full" data-alt="A split-screen portrait of a young woman with a calm expression in a bright, soft-lit environment. The left side is a pristine, natural photo. The right side features a highly subtle, almost imperceptible digital static overlay or 'AI mesh' pattern across the face, representing a protective digital veil. The aesthetic is clean, modern, light-mode, with soft cream and subtle plum accents. High resolution, professional photography style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBttx14c7c08TVT3zup3dnqiuL6Qeq32KnGeZArstiQ-Vqu9kaHFJUFmlWleMM73o4acN1gj5NEG-7WJuxmlSavKnp3t-kCDheiW5vh8YZCsysaRuFhbDWWXMxnxFoSOVvCg9Iw7036N9NUCfIdDa0ct-W6y7W66_b3t9B-oEMRLUj3we1g2hrYGdpC3PaIk2ZkEJra3Kx2T8BzWCqm6YrWihkK5tKKUg_y9rz9mX2mwyDyciPR-4tC')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-primary/10 mix-blend-overlay"></div>
+</div>
+<div class="w-full lg:w-1/2 flex flex-col justify-center">
+<div class="inline-flex items-center gap-2 bg-surface-container text-on-surface-variant font-label-md text-label-md px-3 py-1 rounded-full w-max mb-4">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                        Peer-Reviewed Research
+                    </div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-6">
+                        Face Cloaking — Invisible to People, Unreadable to AI
+                    </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                        Before your photo is posted, VeilAI adds an imperceptible layer of adversarial noise across your face. To the human eye, nothing changes — the photo looks exactly like the original.
+                    </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        But to any AI model trying to learn or recognize that face, the pattern is confusing enough to make the attempt fail. That means if someone scrapes the photo to build a deepfake, train a facial-recognition tracker, or create a fake profile using your likeness — it doesn't work.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Feature 2: Privacy Mirror -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto bg-surface-container-low rounded-[40px] my-12">
+<div class="flex flex-col-reverse lg:flex-row items-center gap-lg">
+<div class="w-full lg:w-1/2 flex flex-col justify-center pl-0 lg:pl-12 py-8">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-6">
+                        Privacy Mirror — Catching What You Might Miss
+                    </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                        Face cloaking protects against AI misuse, but photos often carry other personal information without you noticing — an ID card in the background, a visible phone number, a license plate, or a location clue.
+                    </p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        Privacy Mirror scans every uploaded photo for exactly this kind of visible personal detail. If anything is found, it's highlighted directly on the image, and you can blur it with a single tap before posting.
+                    </p>
+</div>
+<div class="w-full lg:w-1/2 relative rounded-2xl overflow-hidden ambient-shadow h-[400px] border border-outline-variant/30 bg-surface">
+<div class="bg-cover bg-center w-full h-full" data-alt="A lifestyle photo of a casual desk setup with a coffee cup and a laptop. In the background, a subtle, soft-glowing rounded rectangle highlights a generic piece of mail (simulating caught PII). Overlaid on the image is a minimalist, modern UI tool-tip or toggle switch in a dusty rose color, suggesting a 'blur' action. The overall lighting is bright, airy, and calming, fitting a soft-modern protective sanctuary aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQLumXxFfep3yepA-l8GOxE09dTuneBLukFLMig6i-cokD5d0aF41_bozoQVAPQvBB1Z16JI6CaBjAnxfptMEGDGdcK5UsMMP8kdwh8PufZkgC47b5dtwSzSIQRcncoAxEyksl7C0gOF0JU6ajwgHEe3lyQbanpVWCHYzlyOSRs5915AAlyh1d3Nx8lrsTYvyAsYSuO3hPgync0VudfjmE9KLjsNNF1lzoi8ppIVfkqnNW4B47FEBu')"></div>
+</div>
+</div>
+</section>
+<!-- Feature 3: One-Click -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto text-center">
+<div class="w-20 h-20 bg-primary-container rounded-full flex items-center justify-center mx-auto mb-8 shadow-sm">
+<span class="material-symbols-outlined text-on-primary-container text-[40px]" style="font-variation-settings: 'FILL' 1;">shield_locked</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-6">
+                One Click. Fully Protected.
+            </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant md:w-3/4 mx-auto leading-relaxed">
+                Instead of running two separate checks, VeilAI combines Face Cloaking and Privacy Mirror into a single action. Upload your photo once, and VeilAI applies both protections together — handing you back a photo that's ready to post, with nothing left for you to double-check.
+            </p>
+</section>
+<!-- The VeilAI Difference -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4">The VeilAI Difference</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Every existing approach protects after the fact. VeilAI is the only one that acts before misuse can happen.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-surface-container-highest p-8 rounded-2xl flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Detection Tools</h3>
+<ul class="space-y-4 font-body-md text-body-md text-on-surface-variant flex-grow">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-outline mt-1 text-[20px]">close</span> Only removes photos already leaked</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-outline mt-1 text-[20px]">close</span> Tells you after misuse</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-outline mt-1 text-[20px]">close</span> Doesn't catch AI variants</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-outline mt-1 text-[20px]">close</span> Often paid</li>
+</ul>
+</div>
+<!-- Card 2 (Highlight) -->
+<div class="bg-primary p-8 rounded-2xl flex flex-col ambient-shadow transform md:-translate-y-4">
+<h3 class="font-headline-md text-headline-md text-on-primary mb-6">VeilAI</h3>
+<ul class="space-y-4 font-body-md text-body-md text-on-primary/90 flex-grow">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-inverse-primary mt-1 text-[20px]">check_circle</span> Cloaks at the moment of sharing</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-inverse-primary mt-1 text-[20px]">check_circle</span> Works against any future tool</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-inverse-primary mt-1 text-[20px]">check_circle</span> Free core protection</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-inverse-primary mt-1 text-[20px]">check_circle</span> No behavior change needed</li>
+</ul>
+</div>
+<!-- Card 3 -->
+<div class="bg-secondary-container p-8 rounded-2xl flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-secondary-container mb-6">Result</h3>
+<ul class="space-y-4 font-body-md text-body-md text-on-surface-variant flex-grow">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary mt-1 text-[20px]">done_all</span> No deepfake can be generated</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary mt-1 text-[20px]">done_all</span> No tracker can learn your face</li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-secondary mt-1 text-[20px]">done_all</span> You stay in control before the damage</li>
+</ul>
+</div>
+</div>
+<p class="text-center font-body-md text-body-md italic text-on-surface-variant mt-12">
+                "Nothing else protects the photo itself, at the point of posting, from being usable by AI at all."
+            </p>
+</section>
+<!-- CTA Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto text-center">
+<div class="bg-surface-container-high rounded-[32px] p-12 md:p-16 ambient-shadow">
+<h2 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-surface mb-6">
+                    See it in action.
+                </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10">
+                    Upload a photo and watch VeilAI protect it in seconds — no account needed.
+                </p>
+<a href="getstarted.html" class="bg-primary text-on-primary font-label-md px-8 py-4 rounded-full hover:bg-on-primary-fixed-variant transition-colors duration-200 active:scale-95 shadow-md inline-block">Get Started</a>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full rounded-t-xl bg-surface-container-low dark:bg-surface-container-lowest mt-12 border-t border-outline-variant/20">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[24px]" style="font-variation-settings: &quot;FILL&quot; 1;">shield_person</span><span class="text-headline-md font-headline-md text-primary tracking-tight">VeilAI</span></div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm"><span style="font-size: 12px;" class="">© 2026 VeilAI — A NARI KAVACH Initiative</span></p>
+</div>
+<nav class="flex flex-col md:flex-row gap-6"><div class="grid grid-cols-2 gap-lg md:gap-xl">
+    <div class="flex flex-col gap-4">
+        <h4 class="font-label-md text-on-surface uppercase tracking-wider">Product</h4>
+        <ul class="flex flex-col gap-3">
+            <li class=""><a href="features.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm">Features</a></li>
+            <li class=""><a href="getstarted.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm">How it Works</a></li>
+            <li class=""></li>
+        </ul>
+    </div>
+    <div class="flex flex-col gap-4">
+        <h4 class="font-label-md text-on-surface uppercase tracking-wider">Company</h4>
+        <ul class="flex flex-col gap-3">
+            <li class=""><a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm">About</a></li>
+            <li class=""><a href="contact.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 text-sm">Contact</a></li>
+            <li class=""></li>
+        </ul>
+    </div>
+</div></nav>
+</div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

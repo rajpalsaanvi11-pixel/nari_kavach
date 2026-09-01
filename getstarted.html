@@ -1,0 +1,344 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>VeilAI - Get Started</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#fef8f3",
+                      "secondary-fixed": "#eaddff",
+                      "tertiary-fixed-dim": "#efb6d8",
+                      "on-surface": "#1d1b19",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#f3ede8",
+                      "surface-tint": "#874d5f",
+                      "primary-fixed-dim": "#fcb2c6",
+                      "on-primary-container": "#6b3546",
+                      "primary": "#874d5f",
+                      "on-surface-variant": "#514346",
+                      "surface-container-low": "#f8f3ee",
+                      "on-tertiary-fixed": "#320d28",
+                      "on-background": "#1d1b19",
+                      "tertiary-fixed": "#ffd8ed",
+                      "secondary-fixed-dim": "#d0bfef",
+                      "on-secondary-fixed-variant": "#4d4068",
+                      "secondary": "#655781",
+                      "surface-bright": "#fef8f3",
+                      "on-tertiary-fixed-variant": "#643955",
+                      "outline-variant": "#d5c2c5",
+                      "surface-variant": "#e7e1dd",
+                      "surface-container-high": "#ede7e2",
+                      "inverse-surface": "#32302d",
+                      "tertiary-container": "#dca4c6",
+                      "on-secondary-fixed": "#21143a",
+                      "inverse-primary": "#fcb2c6",
+                      "on-tertiary-container": "#633854",
+                      "surface": "#fef8f3",
+                      "tertiary": "#7e506e",
+                      "on-primary-fixed-variant": "#6c3647",
+                      "outline": "#837376",
+                      "on-primary-fixed": "#370b1c",
+                      "secondary-container": "#deccfd",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-dim": "#ded9d4",
+                      "inverse-on-surface": "#f6f0eb",
+                      "on-secondary-container": "#62547e",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#e8a0b4",
+                      "primary-fixed": "#ffd9e1",
+                      "error-container": "#ffdad6",
+                      "surface-container-highest": "#e7e1dd",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "gutter": "24px",
+                      "margin-desktop": "120px",
+                      "base": "8px",
+                      "margin-mobile": "20px",
+                      "md": "24px",
+                      "xs": "4px",
+                      "lg": "48px",
+                      "xl": "80px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-md": [
+                              "Nunito Sans"
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Nunito Sans"
+                      ],
+                      "caption": [
+                              "Nunito Sans"
+                      ],
+                      "body-md": [
+                              "Nunito Sans"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col font-body-md" data-mode="connect">
+<!-- TopNavBar -->
+<nav class="bg-background/80 backdrop-blur-md w-full sticky top-0 bg-surface/60 shadow-sm shadow-primary/5 z-50">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto">
+<a class="text-headline-md font-headline-md text-primary flex items-center gap-2 active:scale-95 transition-transform" href="#"><span class="material-symbols-outlined filled text-3xl text-primary">shield_person</span>
+                VeilAI</a>
+<div class="hidden md:flex gap-gutter items-center"><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="index.html">Home</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="getstarted.html">How it Works</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="features.html">Features</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="contact.html">Contact</a></div>
+<div class="flex items-center gap-sm">
+<a href="getstarted.html" class="bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-full hover:opacity-90 transition-opacity active:scale-95 shadow-sm min-h-[48px] flex items-center justify-center">Get Started</a>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col items-center justify-center px-margin-mobile md:px-margin-desktop py-xl w-full max-w-[1280px] mx-auto">
+<header class="text-center mb-xl w-full max-w-3xl">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-md">Protect Your Peace</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Follow three simple steps to securely cloak your memories before sharing them with the world.</p>
+</header>
+<!-- 3 Horizontal Boxes Layout -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter w-full mb-xl">
+<!-- Box 1: Upload & Protect -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm border border-outline-variant/30 flex flex-col h-full relative group">
+<div class="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-label-md text-label-md font-bold shadow-sm border border-surface-container-lowest z-10">1</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">upload_file</span>
+                    Upload
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow">Drag and drop your photo here to begin the cloaking process.</p>
+<!-- Upload Area (Interactive State simulated) -->
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg border-2 border-dashed border-outline-variant flex flex-col items-center justify-center hover:border-primary hover:bg-surface-variant transition-colors cursor-pointer overflow-hidden group-hover:border-primary/50">
+<!-- Default State -->
+<div class="flex flex-col items-center text-center p-sm absolute inset-0 justify-center z-10 transition-opacity duration-300 opacity-100 hover:opacity-0">
+<span class="material-symbols-outlined text-4xl text-outline mb-2">add_photo_alternate</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Click or drag file</span>
+</div>
+<!-- Simulated "Uploaded" State on hover -->
+<div class="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 z-20 flex flex-col items-center justify-center bg-surface-container-lowest">
+<img class="w-full h-full object-cover rounded-lg absolute inset-0 opacity-50" data-alt="A softly lit, beautifully framed photograph of a person holding a coffee cup in a cozy cafe, rendered in a warm, protective, and calming style fitting the VeilAI soft-modern aesthetic. The image is clear and inviting, acting as a perfect example of a personal photo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg2a6QBXd9gkK9W-NrIlDCWIJHdKxmnKkgscCMguAeguco7Tk1S4beGzYcxVXY051M8Y_HuLQBaEXRa4fIpXNZzJTxTdZobOCahWncJWHn0FLxaNQsX3LiI6MInbxZUmpO69kHcxyDHQIFBCg1bYddbW2B2Uv4Nf1Yh7dUMV3_BONscngpbJ-SU8pMWo4N8SSfZshARx6onGbyWQ69T-D2BVcm-e5zWiEojlZLoIFB-pTZ4BFfb5eK">
+<div class="relative z-30 bg-tertiary-container/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 shadow-sm border border-tertiary/20">
+<span class="material-symbols-outlined filled text-tertiary text-sm">verified</span>
+<span class="font-label-md text-label-md text-on-tertiary-container">Cloak Applied</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Box 2: Privacy Check -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm border border-outline-variant/30 flex flex-col h-full relative">
+<div class="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-md text-label-md font-bold shadow-sm border border-surface-container-lowest z-10">2</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">visibility_off</span>
+                    Review
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow">Review auto-detected sensitive areas and adjust blurs.</p>
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg border border-outline-variant/50 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A lifestyle photo showing a person standing near a parked car and holding a smartphone. The scene is brightly lit with a soft-modern, calming aesthetic. Specific areas like the phone screen and the car's license plate are visible, serving as examples of sensitive information that would be blurred by the privacy software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVR1pTsn1x1soISyjPojBF1ejVGOfCt1WvAVSdFPdoLoRhJPPOJ9uUvLRaeOwK4CfbcVzzkXUt9JZAkm0JF60boz8aOUb0C6VacoaYiMF9Leq83UmtszcX4g2tQXXHpM-Bh9jlcbDTbT0xM6SZOdKZn6bPAfYz_hUXn7Hs93x1-S2mNQyCXIj5q7CcW3aWAVa-oheEgCEIUwNNclc_ga3TieUg7YUwJkegz_h_ypdQn766yh_RJVQW">
+<!-- Highlighted Region 1 (e.g., License Plate) -->
+<div class="absolute bottom-1/4 right-1/4 w-24 h-8 bg-surface-container-lowest/40 backdrop-blur-md border-2 border-primary border-dashed rounded flex items-center justify-center group cursor-pointer hover:bg-primary-container/60 transition-colors">
+<span class="material-symbols-outlined text-primary text-xs opacity-0 group-hover:opacity-100">edit</span>
+</div>
+<!-- Highlighted Region 2 (e.g., Face/ID) -->
+<div class="absolute top-1/4 left-1/3 w-16 h-20 bg-surface-container-lowest/40 backdrop-blur-md border-2 border-primary border-dashed rounded-full flex items-center justify-center group cursor-pointer hover:bg-primary-container/60 transition-colors">
+<span class="material-symbols-outlined text-primary text-xs opacity-0 group-hover:opacity-100">edit</span>
+</div>
+<!-- Blur Toggle Overlay Control -->
+<div class="absolute bottom-2 left-2 right-2 bg-surface-container-lowest/90 backdrop-blur-sm p-2 rounded-lg flex items-center justify-between shadow-sm border border-outline-variant/20">
+<span class="font-caption text-caption text-on-surface">Auto-Blur PII</span>
+<div class="w-10 h-6 bg-primary rounded-full relative cursor-pointer flex items-center px-1">
+<div class="w-4 h-4 bg-on-primary rounded-full absolute right-1 shadow-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Box 3: Secured Confirmation -->
+<div class="bg-surface-container-lowest rounded-xl p-md shadow-sm border border-outline-variant/30 flex flex-col h-full relative">
+<div class="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center font-label-md text-label-md font-bold shadow-sm border border-surface-container-lowest z-10">3</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">lock</span>
+                    Secure
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow">Your photo is protected and ready for the world.</p>
+<div class="relative w-full aspect-square bg-surface-container-low rounded-lg border border-outline-variant/50 flex flex-col items-center justify-center p-md text-center">
+<div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center mb-md shadow-sm border border-primary/10">
+<span class="material-symbols-outlined text-3xl text-on-primary-container">done_all</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface mb-sm">Protection Active</h4>
+<p class="font-caption text-caption text-on-surface-variant mb-lg">Metadata stripped. PII blurred. Ready to share.</p>
+<div class="flex flex-col gap-2 w-full">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-4 py-3 rounded-lg hover:opacity-90 transition-opacity active:scale-95 shadow-sm min-h-[48px] w-full flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                            Save Safely
+                        </button>
+<button class="bg-surface-variant text-on-surface font-label-md text-label-md px-4 py-3 rounded-lg hover:bg-surface-container-high transition-colors active:scale-95 w-full flex items-center justify-center gap-2 min-h-[48px]">
+<span class="material-symbols-outlined text-sm">share</span>
+                            Share
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary & CTA Footer -->
+<div class="flex flex-col items-center text-center mt-lg w-full max-w-2xl bg-surface-container-low rounded-xl p-md border border-outline-variant/20">
+<div class="flex items-center justify-center gap-sm mb-md flex-wrap">
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-caption text-caption flex items-center gap-1 shadow-sm"><span class="material-symbols-outlined text-[14px]">location_off</span> Exif Removed</span>
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-caption text-caption flex items-center gap-1 shadow-sm"><span class="material-symbols-outlined text-[14px]">face_retouching_off</span> Faces Blurred</span>
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-caption text-caption flex items-center gap-1 shadow-sm"><span class="material-symbols-outlined text-[14px]">fingerprint</span> IDs Masked</span>
+</div>
+<button class="bg-secondary text-on-secondary font-label-md text-label-md px-8 py-3 rounded-full hover:opacity-90 transition-opacity active:scale-95 shadow-sm min-h-[48px] inline-flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">restart_alt</span>
+                Protect Another Photo
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low w-full rounded-t-xl mt-auto border-t border-outline-variant/20"><div class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-xl">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-xl mb-xl">
+        <!-- Branding Column -->
+        <div class="flex flex-col gap-4 col-span-1 md:col-span-2">
+            <a class="flex items-center gap-2 text-on-surface active:scale-95 transition-transform w-fit" href="#"><span class="material-symbols-outlined text-primary text-[28px] filled">shield_person</span>
+                <span class="text-headline-md font-headline-md text-primary tracking-tight">VeilAI</span></a>
+            <p class="text-body-md font-body-md text-on-surface-variant max-w-sm">
+                Creating a protective sanctuary for your digital identity. Share your life online, safely and confidently.
+            </p>
+        </div>
+        <!-- Product Column -->
+        <div class="flex flex-col gap-2">
+            <h4 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-2 font-bold">Product</h4>
+            <a class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors" href="features.html">Features</a>
+            <a class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors" href="getstarted.html">How it Works</a>
+            
+            
+        </div>
+        <!-- Company Column -->
+        <div class="flex flex-col gap-2">
+            <h4 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-2 font-bold">Company</h4>
+            <a class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+            <a class="text-body-md font-body-md text-on-surface-variant hover:text-primary transition-colors" href="contact.html">Contact</a>
+            
+            
+        </div>
+    </div>
+    <!-- Bottom Bar -->
+    <div class="border-t border-outline-variant/20 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="flex flex-col items-center md:items-start">
+            <p class="text-caption font-caption text-on-surface-variant">© 2026 VeilAI — A NARI KAVACH Initiative</p>
+            <p class="text-caption font-caption text-outline text-[10px]">saanvi164btcseai25@igdtuw.ac.in · swasthi203btcseai25@igdtuw.ac.in</p>
+        </div>
+        <div class="flex gap-gutter">
+            
+            
+            
+        </div>
+    </div>
+</div></footer>
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>
