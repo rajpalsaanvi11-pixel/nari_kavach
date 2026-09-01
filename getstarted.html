@@ -204,16 +204,26 @@
                     Upload
                 </h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow">Drag and drop your photo here to begin the cloaking process.</p>
-<!-- Upload Area (Interactive State simulated) -->
+<!-- Upload Area (now functional) -->
 <div class="relative w-full aspect-square bg-surface-container-low rounded-lg border-2 border-dashed border-outline-variant flex flex-col items-center justify-center hover:border-primary hover:bg-surface-variant transition-colors cursor-pointer overflow-hidden group-hover:border-primary/50">
+<!-- Real file input, invisible but clickable over the whole box -->
+<input type="file" id="photoInput" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-40" onchange="handlePhotoUpload()">
+
 <!-- Default State -->
-<div class="flex flex-col items-center text-center p-sm absolute inset-0 justify-center z-10 transition-opacity duration-300 opacity-100 hover:opacity-0">
+<div id="uploadDefaultState" class="flex flex-col items-center text-center p-sm absolute inset-0 justify-center z-10 transition-opacity duration-300">
 <span class="material-symbols-outlined text-4xl text-outline mb-2">add_photo_alternate</span>
 <span class="font-label-md text-label-md text-on-surface-variant">Click or drag file</span>
 </div>
-<!-- Simulated "Uploaded" State on hover -->
-<div class="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 z-20 flex flex-col items-center justify-center bg-surface-container-lowest">
-<img class="w-full h-full object-cover rounded-lg absolute inset-0 opacity-50" data-alt="A softly lit, beautifully framed photograph of a person holding a coffee cup in a cozy cafe, rendered in a warm, protective, and calming style fitting the VeilAI soft-modern aesthetic. The image is clear and inviting, acting as a perfect example of a personal photo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg2a6QBXd9gkK9W-NrIlDCWIJHdKxmnKkgscCMguAeguco7Tk1S4beGzYcxVXY051M8Y_HuLQBaEXRa4fIpXNZzJTxTdZobOCahWncJWHn0FLxaNQsX3LiI6MInbxZUmpO69kHcxyDHQIFBCg1bYddbW2B2Uv4Nf1Yh7dUMV3_BONscngpbJ-SU8pMWo4N8SSfZshARx6onGbyWQ69T-D2BVcm-e5zWiEojlZLoIFB-pTZ4BFfb5eK">
+
+<!-- Processing State -->
+<div id="uploadProcessingState" class="hidden absolute inset-0 z-20 flex flex-col items-center justify-center bg-surface-container-lowest">
+<span class="material-symbols-outlined text-4xl text-primary mb-2 animate-spin">progress_activity</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Cloaking in progress...</span>
+</div>
+
+<!-- Uploaded/Cloaked State -->
+<div id="uploadDoneState" class="hidden absolute inset-0 z-20 flex flex-col items-center justify-center bg-surface-container-lowest">
+<img id="uploadPreviewImg" class="w-full h-full object-cover rounded-lg absolute inset-0 opacity-70" src="" alt="Uploaded preview">
 <div class="relative z-30 bg-tertiary-container/90 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 shadow-sm border border-tertiary/20">
 <span class="material-symbols-outlined filled text-tertiary text-sm">verified</span>
 <span class="font-label-md text-label-md text-on-tertiary-container">Cloak Applied</span>
@@ -230,7 +240,7 @@
                 </h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow">Review auto-detected sensitive areas and adjust blurs.</p>
 <div class="relative w-full aspect-square bg-surface-container-low rounded-lg border border-outline-variant/50 overflow-hidden">
-<img class="w-full h-full object-cover" data-alt="A lifestyle photo showing a person standing near a parked car and holding a smartphone. The scene is brightly lit with a soft-modern, calming aesthetic. Specific areas like the phone screen and the car's license plate are visible, serving as examples of sensitive information that would be blurred by the privacy software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVR1pTsn1x1soISyjPojBF1ejVGOfCt1WvAVSdFPdoLoRhJPPOJ9uUvLRaeOwK4CfbcVzzkXUt9JZAkm0JF60boz8aOUb0C6VacoaYiMF9Leq83UmtszcX4g2tQXXHpM-Bh9jlcbDTbT0xM6SZOdKZn6bPAfYz_hUXn7Hs93x1-S2mNQyCXIj5q7CcW3aWAVa-oheEgCEIUwNNclc_ga3TieUg7YUwJkegz_h_ypdQn766yh_RJVQW">
+<img class="w-full h-full object-cover" data-alt="A lifestyle photo showing a person standing near a parked car and holding a smartphone. The scene is brightly lit with a soft-modern, calming aesthetic. Specific areas like the phone screen and the car's license plate are visible, serving as examples of sensitive information that would be blurred by the privacy software." src="https://i.pinimg.com/1200x/bd/29/3a/bd293a30edde6b3f9f963604fb363d90.jpg">
 <!-- Highlighted Region 1 (e.g., License Plate) -->
 <div class="absolute bottom-1/4 right-1/4 w-24 h-8 bg-surface-container-lowest/40 backdrop-blur-md border-2 border-primary border-dashed rounded flex items-center justify-center group cursor-pointer hover:bg-primary-container/60 transition-colors">
 <span class="material-symbols-outlined text-primary text-xs opacity-0 group-hover:opacity-100">edit</span>
@@ -247,6 +257,7 @@
 </div>
 </div>
 </div>
+<p class="font-caption text-caption text-on-surface-variant mt-2 text-center">Privacy Mirror (PII scan) coming soon \u2014 currently showing a sample preview.</p>
 </div>
 <!-- Box 3: Secured Confirmation -->
 <div class="bg-surface-container-lowest rounded-xl p-md shadow-sm border border-outline-variant/30 flex flex-col h-full relative">
@@ -256,17 +267,26 @@
                     Secure
                 </h3>
 <p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow">Your photo is protected and ready for the world.</p>
-<div class="relative w-full aspect-square bg-surface-container-low rounded-lg border border-outline-variant/50 flex flex-col items-center justify-center p-md text-center">
+
+<!-- Default placeholder (before any photo processed) -->
+<div id="secureDefaultState" class="relative w-full aspect-square bg-surface-container-low rounded-lg border border-outline-variant/50 flex flex-col items-center justify-center p-md text-center">
 <div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center mb-md shadow-sm border border-primary/10">
 <span class="material-symbols-outlined text-3xl text-on-primary-container">done_all</span>
 </div>
 <h4 class="font-label-md text-label-md text-on-surface mb-sm">Protection Active</h4>
-<p class="font-caption text-caption text-on-surface-variant mb-lg">Metadata stripped. PII blurred. Ready to share.</p>
+<p class="font-caption text-caption text-on-surface-variant mb-lg">Upload a photo in Step 1 to see your protected result here.</p>
+</div>
+
+<!-- Real result state (shown after cloaking completes) -->
+<div id="secureResultState" class="hidden relative w-full aspect-square bg-surface-container-low rounded-lg border border-outline-variant/50 flex-col items-center justify-center p-md text-center overflow-hidden">
+<img id="cloakedResultImg" class="w-full h-2/3 object-cover rounded-lg mb-md" src="" alt="Cloaked result">
+<h4 class="font-label-md text-label-md text-on-surface mb-sm">Protection Active</h4>
+<p class="font-caption text-caption text-on-surface-variant mb-lg">Face cloaked. Ready to share.</p>
 <div class="flex flex-col gap-2 w-full">
-<button class="bg-primary text-on-primary font-label-md text-label-md px-4 py-3 rounded-lg hover:opacity-90 transition-opacity active:scale-95 shadow-sm min-h-[48px] w-full flex items-center justify-center gap-2">
+<a id="downloadBtn" download="cloaked_photo.jpg" class="bg-primary text-on-primary font-label-md text-label-md px-4 py-3 rounded-lg hover:opacity-90 transition-opacity active:scale-95 shadow-sm min-h-[48px] w-full flex items-center justify-center gap-2">
 <span class="material-symbols-outlined text-sm">download</span>
                             Save Safely
-                        </button>
+                        </a>
 <button class="bg-surface-variant text-on-surface font-label-md text-label-md px-4 py-3 rounded-lg hover:bg-surface-container-high transition-colors active:scale-95 w-full flex items-center justify-center gap-2 min-h-[48px]">
 <span class="material-symbols-outlined text-sm">share</span>
                             Share
@@ -282,7 +302,7 @@
 <span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-caption text-caption flex items-center gap-1 shadow-sm"><span class="material-symbols-outlined text-[14px]">face_retouching_off</span> Faces Blurred</span>
 <span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-caption text-caption flex items-center gap-1 shadow-sm"><span class="material-symbols-outlined text-[14px]">fingerprint</span> IDs Masked</span>
 </div>
-<button class="bg-secondary text-on-secondary font-label-md text-label-md px-8 py-3 rounded-full hover:opacity-90 transition-opacity active:scale-95 shadow-sm min-h-[48px] inline-flex items-center justify-center gap-2">
+<button onclick="resetFlow()" class="bg-secondary text-on-secondary font-label-md text-label-md px-8 py-3 rounded-full hover:opacity-90 transition-opacity active:scale-95 shadow-sm min-h-[48px] inline-flex items-center justify-center gap-2">
 <span class="material-symbols-outlined">restart_alt</span>
                 Protect Another Photo
             </button>
@@ -319,7 +339,7 @@
     <!-- Bottom Bar -->
     <div class="border-t border-outline-variant/20 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
         <div class="flex flex-col items-center md:items-start">
-            <p class="text-caption font-caption text-on-surface-variant">© 2026 VeilAI — A NARI KAVACH Initiative</p>
+            <p class="text-caption font-caption text-on-surface-variant">© 2026 VeilAI - A NARI KAVACH Initiative</p>
             <p class="text-caption font-caption text-outline text-[10px]">saanvi164btcseai25@igdtuw.ac.in · swasthi203btcseai25@igdtuw.ac.in</p>
         </div>
         <div class="flex gap-gutter">
@@ -330,15 +350,68 @@
     </div>
 </div></footer>
 
+<script>
+// ---- Real backend connection logic ----
+// Change this if your Flask server runs on a different address/port
+const CLOAK_API_URL = 'http://127.0.0.1:5000/cloak';
 
+async function handlePhotoUpload() {
+  const fileInput = document.getElementById('photoInput');
+  const file = fileInput.files[0];
+  if (!file) return;
 
+  // Show processing state in Box 1
+  document.getElementById('uploadDefaultState').classList.add('hidden');
+  document.getElementById('uploadDoneState').classList.add('hidden');
+  document.getElementById('uploadProcessingState').classList.remove('hidden');
 
+  const formData = new FormData();
+  formData.append('photo', file);
 
+  try {
+    const response = await fetch(CLOAK_API_URL, {
+      method: 'POST',
+      body: formData
+    });
 
+    if (!response.ok) {
+      alert('No face detected, or something went wrong. Please try a different photo.');
+      resetFlow();
+      return;
+    }
 
+    const imageBlob = await response.blob();
+    const imageUrl = URL.createObjectURL(imageBlob);
 
+    // Update Box 1: show the uploaded preview with "Cloak Applied" badge
+    document.getElementById('uploadProcessingState').classList.add('hidden');
+    document.getElementById('uploadPreviewImg').src = imageUrl;
+    document.getElementById('uploadDoneState').classList.remove('hidden');
 
+    // Update Box 3: show the real cloaked result + working download link
+    document.getElementById('secureDefaultState').classList.add('hidden');
+    document.getElementById('secureResultState').classList.remove('hidden');
+    document.getElementById('secureResultState').classList.add('flex');
+    document.getElementById('cloakedResultImg').src = imageUrl;
+    document.getElementById('downloadBtn').href = imageUrl;
 
+  } catch (err) {
+    console.error(err);
+    alert('Could not connect to the cloaking server. Make sure it is running.');
+    resetFlow();
+  }
+}
 
+function resetFlow() {
+  document.getElementById('photoInput').value = '';
 
+  document.getElementById('uploadProcessingState').classList.add('hidden');
+  document.getElementById('uploadDoneState').classList.add('hidden');
+  document.getElementById('uploadDefaultState').classList.remove('hidden');
+
+  document.getElementById('secureResultState').classList.add('hidden');
+  document.getElementById('secureResultState').classList.remove('flex');
+  document.getElementById('secureDefaultState').classList.remove('hidden');
+}
+</script>
 </body></html>
