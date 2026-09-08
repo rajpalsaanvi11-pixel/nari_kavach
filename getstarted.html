@@ -350,7 +350,54 @@
     </div>
 </div></footer>
 
-<script>
+        <div
+                id="usage-limit-modal"
+                class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="usage-limit-title">
+                <div class="w-full max-w-md rounded-2xl border border-[#D9A5B5]/30 bg-[#fef8f3] p-8 text-center text-[#2A2130] shadow-2xl">
+                        <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#874d5f]/15 text-[#874d5f]">
+                                <span class="material-symbols-outlined text-2xl">hourglass_top</span>
+                        </div>
+                        <h3 id="usage-limit-title" class="mb-3 text-2xl font-semibold tracking-tight">You've Used Your Free Protections</h3>
+                        <p class="mb-4 text-sm leading-relaxed text-on-surface-variant">You get 3 free photo protections every 48 hours. You've used all 3 for this window.</p>
+                        <p class="mb-6 text-sm font-medium text-[#8A5A78]">Want unlimited protections and batch processing? Upgrade for ₹99/month.</p>
+                        <a href="#" onclick="alert('Redirecting to upgrade checkout...'); return false;" class="mb-3 block w-full rounded-full bg-[#7A4B63] px-5 py-3 text-center font-medium text-white shadow transition-all hover:bg-[#8A5A78]">Upgrade Now — ₹99/month</a>
+                        <button type="button" onclick="closeUsageLimitModal()" class="w-full rounded-full border border-gray-300 px-5 py-2.5 text-sm font-medium text-on-surface transition-all hover:bg-gray-100">Maybe Later</button>
+                </div>
+        </div>
+
+        <script>
+                const MAX_FREE_USAGES = 3;
+
+                function getModelUsageCount() {
+                        return Number.parseInt(localStorage.getItem('veilai_usage_count') || '0', 10);
+                }
+
+                function canUseModel() {
+                        return getModelUsageCount() < MAX_FREE_USAGES;
+                }
+
+                function recordModelUsage() {
+                        localStorage.setItem('veilai_usage_count', String(getModelUsageCount() + 1));
+                }
+
+                function showUsageLimitModal() {
+                        document.getElementById('usage-limit-modal')?.classList.replace('hidden', 'flex');
+                }
+
+                function closeUsageLimitModal() {
+                        document.getElementById('usage-limit-modal')?.classList.replace('flex', 'hidden');
+                }
+
+                function resetModelUsage() {
+                        localStorage.removeItem('veilai_usage_count');
+                        closeUsageLimitModal();
+                }
+        </script>
+
+        <script>
 // ---- Real backend connection logic ----
 // Change this if your Flask server runs on a different address/port
 const CLOAK_API_URL = 'http://127.0.0.1:5000/cloak';
@@ -359,6 +406,12 @@ async function handlePhotoUpload() {
   const fileInput = document.getElementById('photoInput');
   const file = fileInput.files[0];
   if (!file) return;
+
+        if (!canUseModel()) {
+                showUsageLimitModal();
+                fileInput.value = '';
+                return;
+        }
 
   // Show processing state in Box 1
   document.getElementById('uploadDefaultState').classList.add('hidden');
@@ -394,6 +447,7 @@ async function handlePhotoUpload() {
     document.getElementById('secureResultState').classList.add('flex');
     document.getElementById('cloakedResultImg').src = imageUrl;
     document.getElementById('downloadBtn').href = imageUrl;
+                recordModelUsage();
 
   } catch (err) {
     console.error(err);
